@@ -44,5 +44,6 @@ func errHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/view/", viewHandler)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	http.HandleFunc("/404/", errHandler)
+	log.Fatal(http.ListenAndServe(":5000", nil))
 }
