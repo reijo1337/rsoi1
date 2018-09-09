@@ -3,7 +3,6 @@ go:
 - '1.11'
 script:
 - go test
-- go run
 deploy:
   provider: heroku
   api_key:
