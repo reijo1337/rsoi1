@@ -7,6 +7,12 @@ import (
 )
 
 func TestNormalRequest(t *testing.T) {
-	ts := httptest.NewServer(http.HandlerFunc(viewHandler))
-	defer ts.Close()
+	request, _ := http.NewRequest("GET", "/view/hello", nil)
+	response := httptest.NewRecorder()
+
+	viewHandler(response, request)
+
+	if response.Code != http.StatusOK {
+		t.Fatalf("Non-expected status code%v:\n\tbody: %v", "200", response.Code)
+	}
 }

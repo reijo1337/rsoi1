@@ -31,11 +31,15 @@ func viewHandler(w http.ResponseWriter, r *http.Request) {
 	p, err := loadPage(title)
 
 	if err != nil {
-		fmt.Fprintf(w, "<h1>404, no such file</h1>")
+		http.Redirect(w, r, "/404/", http.StatusNotFound)
 		return
 	}
 
 	fmt.Fprintf(w, "<h1>%s</h1><div>%s</div>", p.Title, p.Body)
+}
+
+func errHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "<h1>404, no such file</h1>")
 }
 
 func main() {
