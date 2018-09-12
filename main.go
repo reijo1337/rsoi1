@@ -43,7 +43,8 @@ func errHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	port := os.Getenv('PORT')
 	http.HandleFunc("/view/", viewHandler)
 	http.HandleFunc("/404/", errHandler)
-	log.Fatal(http.ListenAndServe(":5000", nil))
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
