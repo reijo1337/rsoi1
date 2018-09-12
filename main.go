@@ -44,6 +44,9 @@ func errHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	port := os.Getenv('PORT')
+	if port == "" {
+		port = 5000
+	}
 	http.HandleFunc("/view/", viewHandler)
 	http.HandleFunc("/404/", errHandler)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
