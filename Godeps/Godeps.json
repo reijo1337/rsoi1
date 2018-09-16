@@ -1,0 +1,6 @@
+{
+	"ImportPath": "github.com/reijo1337/rsoi1",
+	"GoVersion": "go1.11",
+	"GodepVersion": "v80",
+	"Deps": []
+}
