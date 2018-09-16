@@ -40,7 +40,7 @@ func viewHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func errHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "<h1>Упс. 404.</h1></br><img src=\"/static/confused_vincent_vega.gif\"")
+	fmt.Fprintf(w, "<h1>Упс. 404.</h1></br><p><img src=\"../static/confused_vincent_vega.gif\" alt=\"Попробуйте ещё раз\"></p>")
 }
 
 func main() {
@@ -48,6 +48,8 @@ func main() {
 	if port == "" {
 		port = "5000"
 	}
+	fs := http.FileServer(http.Dir("static"))
+	http.Handle("/static/", http.StripPrefix("/static/", fs))
 	http.HandleFunc("/view/", viewHandler)
 	http.HandleFunc("/404/", errHandler)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
