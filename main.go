@@ -40,7 +40,7 @@ func viewHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func errHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "<h1>404, no such file.</h1>")
+	fmt.Fprintf(w, "<h1>Упс. 404.</h1></br><img src=\"/static/confused_vincent_vega.gif\"")
 }
 
 func main() {
